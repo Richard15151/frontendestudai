@@ -22,6 +22,17 @@ function limparFormulario() {
 /**
 
 /**
+ * @function limparRespostaEShowFormulario
+ * @description Limpa a seção de resposta, e mostra o formulário.
+ */
+function limparRespostaEShowFormulario() {
+    divResposta.innerHTML = '';
+    divResposta.classList.add('hidden'); // Esconde a seção de resposta
+}
+/**
+
+
+/**
  * @function renderizarLista
  * @description Constrói dinamicamente o HTML da lista a partir de um objeto JSON
  * retornado pela API e o exibe na área de resposta designada.
@@ -124,10 +135,21 @@ function renderizarLista(dadosLista) {
             // Assumindo que dadosLista.gabarito[numeroQuestao] é o texto da alternativa correta
             htmlLista += `<li class="py-1"><strong>${numeroQuestao}.</strong> ${dadosLista.gabarito[numeroQuestao]}</li>`;
         });
-        htmlLista += `</ol>`;
+        htmlLista += `</ol>
+        `;
     }
-
+    htmlLista += `
+        <div class="mt-6 text-center">
+            <button id="generate-another-list-btn" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
+                Gerar Outra Lista
+            </button>
+        </div>
+    `;
     divResposta.innerHTML = htmlLista;
+
+    const btnGerarOutraLista = document.getElementById('generate-another-list-btn');
+    btnGerarOutraLista.addEventListener('click', limparRespostaEShowFormulario);
+    divResposta.classList.remove('hidden'); 
 }
 
 /**
