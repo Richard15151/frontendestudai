@@ -205,7 +205,7 @@ async function enviarFormulario() {
         console.log('[enviarFormulario] Enviando requisição para API...');
         // Usa a Fetch API para enviar a requisição assíncrona.
         // `await` pausa a execução da função `enviarFormulario` até que a Promise retornada por `fetch` seja resolvida.
-        const resposta = await fetch('http://localhost:5000/estudar', { // URL do endpoint da sua API Flask.
+        const resposta = await fetch('http://backendestudai.vercel.app/estudar', { // URL do endpoint da sua API Flask.
             method: 'POST', // Define o método HTTP como POST.
             headers: {
                 // Define o cabeçalho Content-Type para informar ao servidor que o corpo da requisição é JSON.
